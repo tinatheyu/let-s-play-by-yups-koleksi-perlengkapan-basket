@@ -122,3 +122,29 @@ a:hover {
 .social-btn:hover {
     opacity: 0.8;
 }
+
+
+#toast {
+    visibility: hidden; /* Start hidden */
+    min-width: 250px;
+    margin-left: -125px;
+    background-color: #333;
+    color: #fff;
+    text-align: center;
+    border-radius: 5px;
+    padding: 16px;
+    position: fixed;
+    z-index: 1;
+    left: 50%;
+    bottom: 30px;
+    font-size: 17px;
+    opacity: 0; /* Set opacity to 0 for fade-in effect */
+    transition: opacity 0.5s ease-in-out, visibility 0s linear 0.5s;
+}
+
+
+#toast.show {
+    visibility: visible;
+    opacity: 1; /* Fade in */
+    transition: opacity 0.5s ease-in-out, visibility 0s linear 0s;
+}

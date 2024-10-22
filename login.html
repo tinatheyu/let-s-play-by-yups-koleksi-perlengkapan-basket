@@ -26,5 +26,24 @@
             <button class="social-btn facebook-btn">Sign in with Facebook</button>
         </div>
     </div>
+
+    <div id="toast">Login Sukses!</div>
+
+    <!-- JavaScript Code -->
+    <script>
+        function showToast() {
+            var toast = document.getElementById("toast");
+            toast.className = "show";
+            setTimeout(function () {
+                toast.className = toast.className.replace("show", "");
+            }, 3000);
+        }
+
+        const form = document.querySelector('form');
+        form.addEventListener('submit', function (event) {
+            event.preventDefault();
+            showToast();
+        });
+    </script>
 </body>
 </html>
