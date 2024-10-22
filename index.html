@@ -107,5 +107,87 @@
         </div>
     </footer>
     <!-- Footer selesai -->
+
+    <!-- JavaScript untuk DOM -->
+    <script>
+        // Mengubah teks dinamis pada heading
+        document.addEventListener("DOMContentLoaded", function () {
+            const heading = document.querySelector(".h2-1");
+            heading.textContent = "LET'S PLAY BY YUPS";
+        });
+
+        // Event listener pada tombol katalog
+        document.addEventListener("DOMContentLoaded", function () {
+            const katalogImages = document.querySelectorAll(".customkatalog1");
+            katalogImages.forEach((img, index) => {
+                img.addEventListener("click", function () {
+                    alert("Katalog Sepatu " + (index + 1));
+                });
+            });
+        });
+
+        // Mengganti gambar saat mouseover
+        document.addEventListener("DOMContentLoaded", function () {
+            const katalogImage = document.querySelector(".customkatalog1");
+            katalogImage.addEventListener("mouseover", function () {
+                katalogImage.src = "newimage.jpg"; // Ganti dengan gambar yang diinginkan
+            });
+            katalogImage.addEventListener("mouseout", function () {
+                katalogImage.src = "katalog1.jpeg";
+            });
+        });
+
+        // Menambahkan item ke "wishlist" ketika gambar disukai
+        document.addEventListener("DOMContentLoaded", function () {
+            const likeIcons = document.querySelectorAll('.right-icons img[alt="Like"]');
+            let wishlist = [];
+
+            likeIcons.forEach((icon, index) => {
+                icon.addEventListener("click", function () {
+                    wishlist.push("Item " + (index + 1));
+                    alert("Added to wishlist: Item " + (index + 1));
+                    console.log("Current Wishlist:", wishlist);
+                });
+            });
+        });
+
+        document.addEventListener("DOMContentLoaded", function () {
+            const buttons = document.querySelectorAll('button');
+            buttons.forEach((button) => {
+                button.addEventListener("click", function () {
+                    button.style.backgroundColor = "#FFD700";
+                    button.textContent = "Clicked!";
+                });
+            });
+        });
+
+        document.addEventListener("DOMContentLoaded", function () {
+            const katalogCount = document.querySelectorAll(".customkatalog1").length;
+            alert("Total Items in Katalog: " + katalogCount);
+        });
+
+        document.addEventListener("DOMContentLoaded", function () {
+            const likeIcons = document.querySelectorAll('.right-icons img[alt="Like"]');
+            let wishlist = [];
+
+            likeIcons.forEach((icon, index) => {
+                icon.addEventListener("click", function () {
+                    wishlist.push("Item " + (index + 1));
+                    alert("Added to wishlist: Item " + (index + 1));
+                    console.log("Current Wishlist:", wishlist);
+                });
+
+                icon.addEventListener("dblclick", function () {
+                    const itemIndex = wishlist.indexOf("Item " + (index + 1));
+                    if (itemIndex > -1) {
+                        wishlist.splice(itemIndex, 1);
+                        alert("Removed from wishlist: Item " + (index + 1));
+                        console.log("Current Wishlist:", wishlist);
+                    }
+                });
+            });
+        });
+
+    </script>
 </body>
 </html>
