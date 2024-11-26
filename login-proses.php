@@ -17,7 +17,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     // Simulasi data pengguna (seharusnya data pengguna ada di database)
     $users = [
         'ueka@gmail.com' => [
-            'name' => 'Eka kakakakkak',
+            'name' => 'Eka kakakakkakk',
             'password' => password_hash('123', PASSWORD_DEFAULT), // Password terenkripsi
         ],
     ];
