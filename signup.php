@@ -1,3 +1,32 @@
+<?php
+session_start();
+
+// Menangani pengiriman form
+if ($_SERVER['REQUEST_METHOD'] == 'POST') {
+    // Ambil data dari form
+    $email = $_POST['email'];
+    $firstname = $_POST['firstname'];
+    $lastname = $_POST['lastname'];
+    $dob = $_POST['dob'];
+    $password = $_POST['password'];
+    $confirmPassword = $_POST['confirm-password'];
+    $terms = isset($_POST['terms']) ? $_POST['terms'] : false;
+
+    // Cek apakah password dan konfirmasi password cocok
+    if ($password !== $confirmPassword) {
+        $error_message = "Kata sandi dan konfirmasi kata sandi tidak cocok!";
+    } else {
+
+        // Redirect ke halaman login setelah berhasil mendaftar
+        $_SESSION['temp_user'] = $email;  // Menyimpan sementara info pengguna
+        
+        // Redirect ke login page setelah pendaftaran berhasil
+        header('Location: login.php');
+        exit();
+    }
+}
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -9,7 +38,7 @@
 <body>
     <div class="signup-container">
         <h2>Buat Akun Anda</h2>
-        <form action="index.html" method="post">
+        <form method="POST" action="signup.php">
             <label for="email">Email:</label>
             <input type="email" id="email" name="email" required><br><br>
             
@@ -34,7 +63,9 @@
 
             <button type="submit">Buat Akun</button>
         </form>
-        <p>Sudah memiliki akun? <a href="login.html">Masuk di sini</a></p>
+        <p>Sudah memiliki akun? <a href="login.php">Masuk di sini</a></p>
+
+        <?php if (isset($error_message)) { echo "<p style='color:red;'>$error_message</p>"; } ?>
     </div>
 </body>
 </html>

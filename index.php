@@ -10,22 +10,24 @@
     <!-- Navbar 1 -->
     <nav>
         <ul>
-            <li><a href="index.html">Home</a></li>
+            <li><a href="index.php">Home</a></li>
             <li><a href="#">Contact</a></li>
-            <li><a href="#" id="login-link">Login</a></li>
-            <li><a href="signup.html">Sign Up</a></li>
+            <li><a href="login.php">Login</a></li>
+            <!-- <li><a href="login.php" id="login-link">Login</a></li> -->
+            <li><a href="signup.php">Sign Up</a></li>
         </ul>
     </nav>
     <!-- Navbar 1 selesai -->
 
-    <!-- Pop-up Login Pilihan -->
-    <div class="overlay" id="overlay"></div>
-    <div class="popup" id="popup">
-        <h3>Pilih Login</h3>
-        <a href="login.html">Tamu</a>
-        <a href="dashboard.html">Admin</a>
-        <div class="close-button" onclick="closePopup()">Batal</div>
-    </div>
+<!-- Overlay and Popup for Login Options -->
+<!-- <div class="overlay" id="overlay"></div>
+<div class="popup" id="popup">
+    <h3>Pilih Login</h3>
+    <a href="login.php?role=guest">Tamu</a>
+    <a href="login.php?role=admin">Admin</a>
+    <div class="close-button" onclick="closePopup()">Batal</div>
+</div> -->
+
 
     <!-- Navbar 2 -->
     <nav class="nav2">
