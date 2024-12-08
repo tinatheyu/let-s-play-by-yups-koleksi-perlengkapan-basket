@@ -1,10 +1,11 @@
-
+/* Reset dan Box Model */
 * {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
 }
 
+/* Body */
 body {
     font-family: 'Poppins', sans-serif;
     display: flex;
@@ -12,6 +13,7 @@ body {
     background-color: #f5f5f5;
 }
 
+/* Sidebar */
 .sidebar {
     background-color: #2c3e50;
     width: 250px;
@@ -53,7 +55,7 @@ body {
     border-radius: 5px;
 }
 
-/* Content Area */
+/* Konten */
 .content {
     margin-left: 250px;
     padding: 20px;
@@ -73,31 +75,100 @@ body {
     margin-bottom: 10px;
 }
 
-.main-content {
-    display: flex;
-    gap: 20px;
-}
-
-.card {
-    background-color: white;
-    padding: 20px;
-    border-radius: 10px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-    flex: 1;
+/* Tombol */
+.btn {
+    padding: 10px 20px;
+    background-color: #4CAF50;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    text-decoration: none;
+    font-size: 16px;
+    margin-bottom: 20px;
+    display: inline-block;
     text-align: center;
-    transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
 
-.card h3 {
-    margin-bottom: 10px;
+.btn:hover {
+    background-color: #45a049;
 }
 
-.card:hover {
-    transform: scale(1.05);
-    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+.btn-tambah a {
+    color: white;
+    text-decoration: none;
 }
 
+.btn-tambah a:hover {
+    color: white;
+}
 
+/* Tabel */
+.table-data {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 20px 0;
+    font-size: 18px;
+    text-align: left;
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 20px;
+    border: 1px solid #ddd; /* Menambahkan border pada seluruh tabel */
+}
+
+.table-data th, .table-data td {
+    padding: 12px;
+    text-align: left;
+    border: 1px solid #ddd;
+}
+
+.table-data th {
+    background-color: #f4f4f4;
+    color: #333;
+}
+
+.table-data td {
+    background-color: #ffffff;
+}
+
+.table-data tr:nth-child(even) {
+    background-color: #f9f9f9;
+}
+
+.table-data td a {
+    text-decoration: none;
+    padding: 5px 10px;
+    margin-right: 10px;
+    display: inline-block;
+}
+
+/* Tombol Edit dan Hapus */
+.btn-edit {
+    background-color: #ffa500;
+    color: white;
+    border-radius: 3px;
+    padding: 5px 10px;
+    font-size: 14px;
+    text-decoration: none;
+}
+
+.btn-edit:hover {
+    background-color: #ff8c00;
+}
+
+.btn-delete {
+    background-color: #f44336;
+    color: white;
+    border-radius: 3px;
+    padding: 5px 10px;
+    font-size: 14px;
+    text-decoration: none;
+}
+
+.btn-delete:hover {
+    background-color: #e53935;
+}
+
+/* Responsif untuk perangkat kecil */
 @media (max-width: 768px) {
     .sidebar {
         width: 200px;
@@ -122,4 +193,256 @@ body {
         margin-left: 150px;
         width: calc(100% - 150px);
     }
+}
+
+.table-data {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 20px 0;
+    font-size: 18px;
+    text-align: left;
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 20px;
+    border: 1px solid #ddd; /* Menambahkan border pada seluruh tabel */
+}
+
+.table-data th, .table-data td {
+    padding: 12px;
+    text-align: left;
+    border: 1px solid #ddd;
+}
+
+.table-data th {
+    background-color: #f4f4f4;
+    color: #333;
+}
+
+.table-data td {
+    background-color: #ffffff;
+}
+
+.table-data tr:nth-child(even) {
+    background-color: #f9f9f9;
+}
+
+.table-data td a {
+    text-decoration: none;
+    padding: 5px 10px;
+    margin-right: 10px;
+    display: inline-block;
+}
+
+/* Adjust the header space */
+.content .header {
+    margin-bottom: 10px; /* Reduce the bottom margin */
+}
+
+/* Adjust the navigation space */
+.home-section nav {
+    margin-top: 0; /* Remove top margin to reduce the gap */
+}
+
+/* Optional: Adjust the header and nav padding for better alignment */
+.content .header h1 {
+    padding-bottom: 5px; /* Add some padding below the header text */
+}
+
+.sidebar-button {
+    padding: 10px 0; /* Adjust padding to match the header */
+}
+
+/* Style the form container */
+.card {
+    width: 80%;
+    margin: 20px auto;
+    padding: 20px;
+    background-color: #fff;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    border-radius: 8px;
+}
+
+/* Style the card header */
+.card-header {
+    font-size: 20px;
+    font-weight: bold;
+    margin-bottom: 15px;
+    background-color: #87CEEB;
+    color: #fff;
+    padding: 10px;
+    border-radius: 6px 6px 0 0;
+}
+
+/* Style the form labels and inputs */
+form label {
+    display: block; /* Ensure labels are displayed above the inputs */
+    margin: 10px 0 5px; /* Add spacing above and below the label */
+    font-size: 14px;
+    font-weight: bold;
+}
+
+form input, form select {
+    width: 100%; /* Ensure inputs take the full width */
+    padding: 10px;
+    margin-bottom: 15px; /* Add space between input fields */
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    font-size: 14px;
+}
+
+form button {
+    background-color: #87CEEB;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    padding: 10px 20px;
+    font-size: 16px;
+    cursor: pointer;
+    display: inline-block;
+    text-align: center;
+    margin-top: 10px;
+}
+
+form button:hover {
+    background-color: #4c9ed9; /* Slightly darker on hover */
+}
+
+/* Optional: Style the submit button when focused */
+form button:focus {
+    outline: none;
+    box-shadow: 0 0 5px rgba(0, 123, 255, 0.5);
+}
+
+/* Optional: Style for the form container */
+.card-body {
+    padding: 15px;
+}
+/* Edit button style */
+.btn-edit {
+    background-color: #4CAF50; /* Green background */
+    color: white; /* White text */
+    padding: 8px 16px; /* Padding for the button */
+    border: none; /* Remove default border */
+    border-radius: 5px; /* Rounded corners */
+    cursor: pointer; /* Pointer cursor on hover */
+    text-align: center; /* Center text */
+    display: inline-block; /* Inline block to allow margin/padding */
+    text-decoration: none; /* Remove link underline */
+    font-size: 14px; /* Text size */
+    transition: background-color 0.3s, transform 0.3s; /* Smooth transition on hover */
+}
+
+/* Hover effect for the Edit button */
+.btn-edit:hover {
+    background-color: #45a049; /* Darker green on hover */
+    transform: scale(1.05); /* Slightly grow the button */
+}
+
+/* Delete button style */
+.btn-delete {
+    background-color: #f44336; /* Red background */
+    color: white; /* White text */
+    padding: 8px 16px; /* Padding for the button */
+    border: none; /* Remove default border */
+    border-radius: 5px; /* Rounded corners */
+    cursor: pointer; /* Pointer cursor on hover */
+    text-align: center; /* Center text */
+    display: inline-block; /* Inline block to allow margin/padding */
+    text-decoration: none; /* Remove link underline */
+    font-size: 14px; /* Text size */
+    transition: background-color 0.3s, transform 0.3s; /* Smooth transition on hover */
+}
+
+/* Hover effect for the Delete button */
+.btn-delete:hover {
+    background-color: #d32f2f; /* Darker red on hover */
+    transform: scale(1.05); /* Slightly grow the button */
+}
+
+/* Optional: Space between buttons */
+.btn-edit, .btn-delete {
+    margin-right: 10px;
+}
+
+/* Style for file input */
+input[type="file"] {
+    display: inline-block;
+    padding: 10px;
+}
+
+/* Style the form container */
+.card {
+    width: 80%;
+    margin: 20px auto;
+    padding: 20px;
+    background-color: #fff;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    border-radius: 8px;
+}
+
+/* Style the card header */
+.card-header {
+    font-size: 20px;
+    font-weight: bold;
+    margin-bottom: 15px;
+    background-color: #87CEEB;
+    color: #fff;
+    padding: 10px;
+    border-radius: 6px 6px 0 0;
+}
+
+/* Style the form container */
+form {
+    display: flex;
+    flex-wrap: wrap; /* Allow fields to wrap to new lines */
+    gap: 20px; /* Add spacing between fields */
+}
+
+/* Style each form input group (label + input) */
+form .input-group {
+    flex: 1 1 45%; /* 2 columns with equal width */
+    min-width: 250px; /* Ensure inputs don’t become too small */
+}
+
+/* Style the form labels */
+form label {
+    display: block;
+    font-size: 14px;
+    font-weight: bold;
+    margin-bottom: 5px;
+    text-align: left; /* Align text to the left */
+}
+
+/* Style the form inputs */
+form input, form select {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 15px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    font-size: 14px;
+}
+
+/* Button styles */
+form button {
+    background-color: #87CEEB;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    padding: 10px 20px;
+    font-size: 16px;
+    cursor: pointer;
+    display: inline-block;
+    text-align: center;
+    margin-top: 10px;
+}
+
+form button:hover {
+    background-color: #4c9ed9;
+}
+
+/* Optional: Style for file input */
+input[type="file"] {
+    display: inline-block;
+    padding: 10px;
 }

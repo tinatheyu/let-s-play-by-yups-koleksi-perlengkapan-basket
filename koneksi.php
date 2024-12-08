@@ -1,15 +1,14 @@
-<?php 
+<?php
+$host = "localhost"; // atau nama host lainnya
+$username = "root";  // ganti dengan username database Anda
+$password = "root";      // ganti dengan password database Anda
+$database = "letsplaybyyups";  // ganti dengan nama database Anda
 
-$servername = 'localhost';
-$username = 'root';
-$password = 'root'; //jika tidak ada password di kosongkan saja
-$database = 'db_catshop';
+// Membuat koneksi ke database
+$koneksi = mysqli_connect($host, $username, $password, $database);
 
-// membuat koneksi
-$koneksi = mysqli_connect($servername, $username, $password, $database);
-
-// mengecek koneksi
-if(!$koneksi) {
-    die('Connection Failed:' . mysqli_connect_error());
+// Cek koneksi
+if (!$koneksi) {
+    die("Koneksi gagal: " . mysqli_connect_error());
 }
- ?>
+?>
