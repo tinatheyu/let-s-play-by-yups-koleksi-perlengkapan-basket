@@ -1,3 +1,16 @@
+<?php
+session_start();
+
+// Validasi login melalui sesi
+if (!isset($_SESSION['email']) || !isset($_SESSION['username'])) {
+    header("Location: login.php"); // Redirect ke login jika tidak ada sesi
+    exit;
+}
+
+// Ambil data sesi
+$username = htmlspecialchars($_SESSION['username']); // Mencegah XSS
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -11,7 +24,7 @@
     <h2 class="sidebar-title">Dashboard</h2>
     <ul>
         <li>
-            <a href="dashboard.php">
+            <a href="admin.php">
                 <img src="https://img.icons8.com/ios-glyphs/30/ffffff/home.png" alt="Dashboard Icon"/>
                 <span class="menu-text">Dashboard</span>
             </a>
@@ -48,11 +61,13 @@
         </li>
     </ul>
 </div>
-    <div class="content">
-        <div class="header">
-            <h1>Hello, Welcome Back!</h1>
-        </div>
-        <div class="main-content">
+<div class="content">
+    <div class="header">
+        <h1 id="text"></h1>
+        <p id="date"></p>
+        <p>Welcome, <?php echo $username; ?>!</p>
+    </div>
+    <div class="main-content">
             <div class="card">
                 <h3>Profile Overview</h3>
                 <p>Check your profile details here.</p>
@@ -66,6 +81,45 @@
                 <p>Manage your preferences and settings here.</p>
             </div>
         </div>
-    </div>
+</div>
+
+    <script>
+    function myFunction() {
+        const months = ["Januari", "Februari", "Maret", "April", "Mei", "Juni", "Juli", "Agustus", "September", "Oktober", "November", "Desember"];
+        const days = ["Minggu", "Senin", "Selasa", "Rabu", "Kamis", "Jumat", "Sabtu"];
+        let date = new Date();
+        let jam = date.getHours();
+        let tanggal = date.getDate();
+        let hari = days[date.getDay()];
+        let bulan = months[date.getMonth()];
+        let tahun = date.getFullYear();
+        let m = date.getMinutes();
+        let s = date.getSeconds();
+        m = checkTime(m);
+        s = checkTime(s);
+        document.getElementById("date").innerHTML = `${hari}, ${tanggal} ${bulan} ${tahun}, ${jam}:${m}:${s}`;
+        requestAnimationFrame(myFunction);
+    }
+
+    function checkTime(i) {
+        return i < 10 ? "0" + i : i;
+    }
+
+    window.onload = function () {
+        let date = new Date();
+        let jam = date.getHours();
+        let textElement = document.getElementById("text");
+        if (jam >= 4 && jam <= 10) {
+            textElement.textContent = "Selamat Pagi,";
+        } else if (jam >= 11 && jam <= 14) {
+            textElement.textContent = "Selamat Siang,";
+        } else if (jam >= 15 && jam <= 18) {
+            textElement.textContent = "Selamat Sore,";
+        } else {
+            textElement.textContent = "Selamat Malam,";
+        }
+        myFunction();
+    };
+</script>
 </body>
 </html>

@@ -4,7 +4,7 @@ session_start();
 $host = 'localhost';
 $user = 'root';
 $password = 'root';
-$database = 'db_sun_furniture';
+$database = 'letsplaybyyups';
 
 $koneksi = mysqli_connect($host, $user, $password, $database);
 if (!$koneksi) {
@@ -83,7 +83,7 @@ mysqli_close($koneksi); // Koneksi database ditutup setelah proses selesai
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Dashboard</title>
-    <link rel="stylesheet" href="../css/admin.css">
+    <link rel="stylesheet" href="../css/dashboard.css">
 </head>
 <style>
 .table-data {
@@ -291,7 +291,7 @@ input[type="file"] {
         <h2>Dashboard</h2>
         <ul>
         <li>
-            <a href="./admin.php">
+            <a href="dashboard.php">
                 <img src="https://img.icons8.com/ios-glyphs/30/ffffff/home.png" alt="Dashboard Icon"/>
                 <span class="menu-text">Dashboard</span>
             </a>
@@ -303,7 +303,7 @@ input[type="file"] {
             </a>
         </li>
         <li> 
-            <a href="newarrival.php">
+            <a href="newarrival/newarrival.php">
                 <img src="https://img.icons8.com/?size=100&id=FSj4IS5Y13G3&format=png&color=FFFFFF" alt="Reports Icon" width="30" height="30"/>
                 <span class="menu-text">New Arrival</span>
             </a>

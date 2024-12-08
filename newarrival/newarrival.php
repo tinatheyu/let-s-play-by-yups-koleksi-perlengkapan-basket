@@ -28,7 +28,7 @@ $result = mysqli_query($koneksi, $query);
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Dashboard</title>
-    <link rel="stylesheet" href="../css/admin.css">
+    <link rel="stylesheet" href="../css/dashboard.css">
 </head>
 <style>
 .table-data {
@@ -161,31 +161,31 @@ $result = mysqli_query($koneksi, $query);
         <h2>Dashboard</h2>
         <ul>
         <li>
-            <a href="../admin.php">
+            <a href="dashboard.php">
                 <img src="https://img.icons8.com/ios-glyphs/30/ffffff/home.png" alt="Dashboard Icon"/>
                 <span class="menu-text">Dashboard</span>
             </a>
         </li>
         <li>
-            <a href="../product/./product.php">
+            <a href="./product/product.php">
                 <img src="https://img.icons8.com/?size=100&id=82774&format=png&color=FFFFFF" width="20" height="20" alt="Products Icon"/>
                 <span class="menu-text">Products</span>
             </a>
         </li>
         <li> 
-            <a href="newarrival.php">
+            <a href="newarrival/newarrival.php">
                 <img src="https://img.icons8.com/?size=100&id=FSj4IS5Y13G3&format=png&color=FFFFFF" alt="Reports Icon" width="30" height="30"/>
                 <span class="menu-text">New Arrival</span>
             </a>
         </li>
         <li>
-            <a href="../admin.php">
+            <a href="orders/orders.php">
                 <img src="https://img.icons8.com/ios-glyphs/30/ffffff/settings.png" alt="Orders Icon"/>
                 <span class="menu-text">Orders</span>
             </a>
         </li>
         <li>
-            <a href="../admin.php">
+            <a href="reports.php">
                 <img src="https://img.icons8.com/ios-glyphs/30/ffffff/message-group.png" alt="Reports Icon"/>
                 <span class="menu-text">Reports</span>
             </a>
@@ -209,7 +209,7 @@ $result = mysqli_query($koneksi, $query);
                 </div>
             </nav>
             <div>
-                <button type="button" class="btn btn-tambah">
+            <button type="button" class="btn btn-tambah">
                     <a href="tambah-newarrival.php">Tambah</a>
                 </button>
                 <button type="button" class="btn btn-cetak">

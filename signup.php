@@ -1,31 +1,60 @@
 <?php
 session_start();
+include 'koneksi.php'; // Pastikan file ini memuat koneksi database $koneksi
 
-// Menangani pengiriman form
-if ($_SERVER['REQUEST_METHOD'] == 'POST') {
+// Cek jika form dikirimkan
+if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     // Ambil data dari form
     $email = $_POST['email'];
-    $firstname = $_POST['firstname'];
-    $lastname = $_POST['lastname'];
-    $dob = $_POST['dob'];
+    $username = $_POST['username'];
     $password = $_POST['password'];
-    $confirmPassword = $_POST['confirm-password'];
-    $terms = isset($_POST['terms']) ? $_POST['terms'] : false;
 
-    // Cek apakah password dan konfirmasi password cocok
-    if ($password !== $confirmPassword) {
-        $error_message = "Kata sandi dan konfirmasi kata sandi tidak cocok!";
-    } else {
-
-        // Redirect ke halaman login setelah berhasil mendaftar
-        $_SESSION['temp_user'] = $email;  // Menyimpan sementara info pengguna
-        
-        // Redirect ke login page setelah pendaftaran berhasil
-        header('Location: login.php');
-        exit();
+    // Validasi input kosong
+    if (empty($email) || empty($username) || empty($password)) {
+        echo "<script>
+                alert('Pastikan Anda mengisi semua data!');
+                window.location = 'signup.php';
+              </script>";
+        exit;
     }
+
+    // Hash password sebelum disimpan
+    $hashedPassword = password_hash($password, PASSWORD_BCRYPT);
+
+    // Cek apakah email sudah terdaftar
+    $stmt = $koneksi->prepare("SELECT * FROM tb_admin WHERE email = ?");
+    $stmt->bind_param("s", $email);
+    $stmt->execute();
+    $result = $stmt->get_result();
+
+    if ($result->num_rows > 0) {
+        echo "<script>
+                alert('Email sudah terdaftar!');
+                window.location = 'signup.php';
+              </script>";
+        exit;
+    }
+
+    // Simpan data pengguna ke database
+    $stmt = $koneksi->prepare("INSERT INTO tb_admin (email, username, password) VALUES (?, ?, ?)");
+    $stmt->bind_param("sss", $email, $username, $hashedPassword);
+
+    if ($stmt->execute()) {
+        echo "<script>
+                alert('Registrasi berhasil! Silakan login.');
+                window.location = 'login.php';
+              </script>";
+    } else {
+        echo "<script>
+                alert('Terjadi kesalahan saat registrasi.');
+                window.location = 'signup.php';
+              </script>";
+    }
+
+    $stmt->close();
 }
 ?>
+
 
 <!DOCTYPE html>
 <html lang="en">
@@ -42,21 +71,11 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
             <label for="email">Email:</label>
             <input type="email" id="email" name="email" required><br><br>
             
-            <label for="firstname">Nama Depan:</label>
-            <input type="text" id="firstname" name="firstname" required><br><br>
-            
-            <label for="lastname">Nama Belakang:</label>
-            <input type="text" id="lastname" name="lastname" required><br><br>
-            
-            <label>Tanggal Lahir:</label>
-            <label for="dob">Tanggal Lahir (dd/mm/yyyy):</label>
-            <input type="text" id="dob" name="dob" placeholder="Contoh: 25/12/2023" required><br><br>
+            <label for="username">Username:</label>
+            <input type="text" id="username" name="username" required><br><br>
 
             <label for="password">Kata Sandi:</label>
             <input type="password" id="password" name="password" required><br><br>
-
-            <label for="confirm-password">Konfirmasi Kata Sandi:</label>
-            <input type="password" id="confirm-password" name="confirm-password" required><br><br>
 
             <input type="checkbox" id="terms" name="terms" required>
             <label for="terms">Saya menyetujui <a href="#">kebijakan privasi</a> dan <a href="#">ketentuan penggunaan</a> Let's Play</label><br><br>
